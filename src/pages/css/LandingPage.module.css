@@ -1,0 +1,105 @@
+.LandingPage  {
+    height: 100vh;
+    padding: 0 2rem;
+}
+
+.LandingNav {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.LandingNav h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: yellow;
+}
+
+.LandingRow {
+    height: 90vh;
+    width: 100%;
+    
+}
+
+.LandingRow > div {
+    max-width: 40%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    height: 100%;
+    padding: 1rem 2rem;
+}
+.IntroText {
+    width: 100%;
+    /* height: 70%; */
+    flex: .8;
+    padding: .5rem 1rem;
+    position: relative;
+    text-align: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+.IntroText h1 {
+    font-size: 3.8rem;
+    color: white;
+    word-spacing: .75rem;
+    letter-spacing: 1rem;
+    line-height: 6.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.IntroText h1 em {
+    color: yellow;
+}
+
+.LandingBtn {
+    /* position: absolute;
+    left: 23.5%;
+    margin-left: -23.5px; */
+    background-color: rgb(0,0,0);
+    color: yellow;
+    text-decoration: none;
+    letter-spacing: .2rem;
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    /* align-self: center; */
+    transition: all ease-in-out .35s;
+    font-size: 1.25rem;
+}
+
+.LandingBtn:hover {
+    background-color: #00FFFE;;
+    color: black;
+}
+
+.Socials {
+    /* background-color: black; */
+    color: white;
+    flex: .2;
+    width: 100%;
+    /* text-align: center; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+}
+
+.Socials a {
+    text-decoration: none;
+    color: #00FFFE;
+    /* background-color: black; */
+    margin: .5rem;
+    padding: 0 .625rem;
+    border-bottom: .125rem solid #ffff00;
+}
+
+.Socials a em {
+    display: block;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    white-space: nowrap;
+}

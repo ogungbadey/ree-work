@@ -1,0 +1,108 @@
+.NavBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* background-color: black; */
+    min-height: 3rem;
+    padding: 1rem 0;
+    z-index: 100;
+}
+
+.NavBar div {
+    max-width: 85%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NavBar div ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    color: white;
+}
+
+.NavBar div h2 {
+    padding: 0;
+    margin: 0;
+    color: yellow;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+}
+.NavBar div span {
+    display: none;
+}
+
+.SideDrawer {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .NavBar div {
+        justify-content: flex-start;
+        gap: .5rem;
+    }
+    
+    .NavBar div span {
+        display: block;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .NavBar div h2 {
+        font-size: 1.5rem;
+    }
+
+    .NavBar div ul {
+        display: none;
+    }
+
+    .SideDrawer {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* right: 50%; */
+        height: 45vh;
+        width: 100%;
+        background-color: rgb(50, 45, 45);;
+        z-index: 1000;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .SideDrawer span {
+        /* float: right; */
+        position: absolute;
+        right: 2%;
+        overflow: hidden;
+        font-size: 1.8rem;
+        font-weight: bold;
+        display: inline-block;
+        /* border: .125rem solid rgb(240, 240, 80); */
+        padding: 0 0.35rem;
+        color: white;
+        background-color: yellow;
+        color: rgb(50, 45, 45);
+        /* box-sizing: initial; */
+    }
+
+    .SideDrawer ul {
+        margin: 1.5rem 0;
+        padding: 0;
+        height: 85%;
+        /* width: 100%; */
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;
+        list-style: none; */
+        color: white;
+    }
+
+    .SideDrawer li {
+        padding: .5rem 0;
+        text-align: center;
+        /* border-bottom: .125rem solid yellow; */
+    }
+}

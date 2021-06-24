@@ -6,17 +6,21 @@ import PlayerButton from "../PlayerComponents/PlayerButton/PlayerButton";
 import PlayerTimeLine from "../PlayerComponents/PlayerTimeLine/PlayerTimeLine";
 import PlayerControls from "../PlayerComponents/PlayerControls/PlayerControls";
 import PlayerExtra from "../PlayerComponents/PlayerExtra/PlayerExtra";
+import PlayerQueue from "../PlayerComponents/PlayerQueue";
 
-function MusicPlayer() {
-    const songUrl = `${process.env.PUBLIC_URL}/assets/music/sound.mp3`;
+function MusicPlayer({music}) {
+    const songUrl = `${process.env.PUBLIC_URL}/assets/music/${music.title}`;
 
     const playerRef = useRef();
     const playerProgressRef = useRef();
     const animationRef = useRef();
 
+    const [currentSong, setCurrentSong] = useState(0)
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState("0.00")
+    const [showQueue, setShowQueue] = useState(false)
     
     const whilePlaying = () => {
         playerProgressRef.current.value = playerRef.current.currentTime;
@@ -37,6 +41,14 @@ function MusicPlayer() {
         
     }
 
+   
+
+    const toggleList = () => {
+        console.log("clicked")
+        const prevState = showQueue
+        setShowQueue(!prevState)
+    }
+
     const calcTime = secs => {
         const mins = Math.floor(secs/60) ;
         const serialisedMins = mins < 10 ? `0${mins}` : mins;
@@ -54,10 +66,8 @@ function MusicPlayer() {
         const seconds = Math.floor(playerRef.current.duration);
         setDuration(seconds);
         playerProgressRef.current.max = seconds;
-        // return () => {
-        //     cleanup
-        // }
-    }, [playerRef?.current?.loadedmetadata, playerRef?.current?.readyState])
+        
+    }, [playerRef?.current?.loadedmetadata, playerRef?.current?.readyState, currentSong])
 
 
 
@@ -65,8 +75,8 @@ function MusicPlayer() {
         <div className={styles.Player}>
             <div className={styles.Wrapper}>
             <div className={styles.Content}>
-            <audio ref={playerRef} src={songUrl} preload="metadata"></audio>
-                <PlayerControls>
+            <audio ref={playerRef} src={`${process.env.PUBLIC_URL}/assets/music/${music.title}`} preload="metadata"></audio>
+                <PlayerControls styling={styles.LeftControl}>
                 <PlayerButton styling={styles.ForwardBackward}>
                     <IoPlaySkipBackOutline/>
                 </PlayerButton>
@@ -81,14 +91,14 @@ function MusicPlayer() {
                 <PlayerTimeLine 
                 changeHandler={onSeek}
                 progRef={playerProgressRef} 
-                styling={styles.PlayerTimeLine} 
-                currentTime={currentTime ? calcTime(currentTime) : "0.00"} 
-                duration={duration ? calcTime(duration): "0.00"}/>
-                <PlayerExtra/>
+                styling={styles.MiddleControl} 
+                currentTime={currentTime ? calcTime(currentTime) : "0:00"} 
+                duration={duration ? calcTime(duration): "0:00"}/>
+                <PlayerExtra clickList={toggleList} styling={[styles.RightControl,styles.ExtraBtn, styles.PlayerQueue]}/>
                 {/* <div>
                     <input type="range"/>
                 </div> */}
-
+                <PlayerQueue  styling={styles.PlayerQueue} show={showQueue}/>
             </div>
             </div>
         </div>

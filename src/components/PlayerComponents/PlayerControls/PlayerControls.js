@@ -1,8 +1,8 @@
 import React from 'react'
 
-function PlayerControls({children}) {
+function PlayerControls({styling,children}) {
     return (
-        <div style={{flex:"1", textAlign:"center", gap:".8rem"}}>
+        <div className={styling}>
             {children}
         </div>
     )
